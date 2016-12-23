@@ -1,9 +1,15 @@
 #ifndef GAMELOGIC_H
 #define GAMELOGIC_H
 
+//The standard 2048 board is 4x4. These macros can be modified for different
+//board sizes
 #define BOARD_WIDTH 4
 #define BOARD_HEIGHT 4
 
+//Cardinal enumeration is used only when sliding the tiles in a direction.
+//    NORTH
+//WEST     EAST
+//    SOUTH
 typedef enum {
     NORTH,
     EAST,
@@ -11,9 +17,10 @@ typedef enum {
     WEST
 } Cardinal;
 
+//Each index of this array holds the value of one tile
 static unsigned short game_board[BOARD_WIDTH][BOARD_HEIGHT];
-static int score;
-static int changed;
+static int score;   //used to track the points earned by the player
+static int changed; //indicates if the board state has changed since last check
 
 void init_game();
 void slide(Cardinal dir);
